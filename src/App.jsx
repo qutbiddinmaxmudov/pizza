@@ -1,5 +1,5 @@
-import "./index.scss"
-import Header from './components/Header'
+import "./index.scss";
+import Header from "./components/Header";
 function App() {
   return (
     <div className="wrapper">
@@ -82,7 +82,7 @@ function App() {
                   <i>2</i>
                 </div>
               </div>
-            </div>{" "}
+            </div>
             <div className="pizza-block">
               <img
                 className="pizza-block__image"
@@ -120,7 +120,7 @@ function App() {
                   <i>2</i>
                 </div>
               </div>
-            </div>{" "}
+            </div>
             <div className="pizza-block">
               <img
                 className="pizza-block__image"
@@ -158,7 +158,7 @@ function App() {
                   <i>2</i>
                 </div>
               </div>
-            </div>{" "}
+            </div>
             <div className="pizza-block">
               <img
                 className="pizza-block__image"
@@ -196,7 +196,7 @@ function App() {
                   <i>2</i>
                 </div>
               </div>
-            </div>{" "}
+            </div>
             <div className="pizza-block">
               <img
                 className="pizza-block__image"
@@ -234,7 +234,7 @@ function App() {
                   <i>2</i>
                 </div>
               </div>
-            </div>{" "}
+            </div>
             <div className="pizza-block">
               <img
                 className="pizza-block__image"
@@ -272,7 +272,7 @@ function App() {
                   <i>2</i>
                 </div>
               </div>
-            </div>{" "}
+            </div>
             <div className="pizza-block">
               <img
                 className="pizza-block__image"
@@ -310,7 +310,7 @@ function App() {
                   <i>2</i>
                 </div>
               </div>
-            </div>{" "}
+            </div>
             <div className="pizza-block">
               <img
                 className="pizza-block__image"
@@ -348,7 +348,7 @@ function App() {
                   <i>2</i>
                 </div>
               </div>
-            </div>{" "}
+            </div>
             <div className="pizza-block">
               <img
                 className="pizza-block__image"
