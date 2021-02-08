@@ -1,12 +1,12 @@
 import React from "react";
 import classNames from "classnames";
 
-export default (props) => (
+export default ({className, children}, ...props) => (
   <button
-    className={classNames("button", {
+    className={classNames("button", className, {
       "button--outline": props.outline,
     })}
   >
-    {props.children}
+    {children}
   </button>
 );
