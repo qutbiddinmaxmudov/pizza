@@ -1,10 +1,10 @@
 import React from "react";
 
-import Button from "./Button";
+import { Button } from "./";
 
 import logo from "../static/img/pizza-logo.svg";
 
-export default function () {
+function Header() {
   return (
     <div className="header">
       <div className="container">
@@ -55,3 +55,5 @@ export default function () {
     </div>
   );
 }
+
+export default Header;
