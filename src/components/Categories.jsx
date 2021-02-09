@@ -6,7 +6,7 @@ function Categories({ items }) {
   return (
     <div className="categories">
       <ul>
-        {items.map((item, index) => (
+        {items && items.map((item, index) => (
           <li
             className={active === index ? "active" : ""}
             onClick={() => onClickItem(index)}
