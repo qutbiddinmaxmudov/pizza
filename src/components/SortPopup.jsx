@@ -5,26 +5,30 @@ function SortPopup({ items }, ...props) {
   const [sortActive, setSortActive] = useState(0);
   const sortRef = useRef(null);
   const toggleVisiblePopup = () => setVisiblePopup(!visiblePopup);
-  const activeLabel = items[sortActive];
+  const activeLabel = items[sortActive].name;
 
   const setActive = (index) => {
     setSortActive(index);
     setVisiblePopup(false);
   };
 
-  const handleOutsideClick = (e) =>{
-    if(!e.path.includes(sortRef.current)) setVisiblePopup(false);
-  }
+  const handleOutsideClick = (e) => {
+    if (!e.path.includes(sortRef.current)) setVisiblePopup(false);
+  };
 
   useEffect(() => {
-    document.body.onclick = handleOutsideClick
+    document.body.onclick = handleOutsideClick;
   }, []);
 
   return (
     <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
-          style={visiblePopup ? {transform: 'rotateX(0deg)'} : {transform: 'rotateX(180deg)'}}
+          style={
+            visiblePopup
+              ? { transform: "rotateX(0deg)" }
+              : { transform: "rotateX(180deg)" }
+          }
           width="10"
           height="6"
           viewBox="0 0 10 6"
@@ -42,13 +46,13 @@ function SortPopup({ items }, ...props) {
       {visiblePopup && (
         <div className="sort__popup">
           <ul>
-            {items.map((item, i) => (
+            {items.map((obj, i) => (
               <li
                 onClick={() => setActive(i)}
                 className={sortActive === i ? "active" : ""}
-                key={`${item}_${i}`}
+                key={`${obj.type}_${i}`}
               >
-                {item}
+                {obj.name}
               </li>
             ))}
           </ul>

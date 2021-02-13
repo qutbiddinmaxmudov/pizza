@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { Route } from "react-router-dom";
 import axios from "axios";
 
 import "./index.scss";
 
 import { Header } from "./components";
 import { Home, Cart } from "./pages";
-import { Route } from "react-router-dom";
 
 function App() {
   const [pizzas, setPizzas] = useState([]);
