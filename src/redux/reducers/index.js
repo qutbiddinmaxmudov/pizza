@@ -5,7 +5,7 @@ import filtersReducer from "./filters";
 import pizzasReducer from "./pizzas";
 
 const rootReducer = combineReducers({
-  cartReducer,
+  cart:cartReducer,
   filters: filtersReducer,
   pizzas: pizzasReducer,
 });
