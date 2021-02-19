@@ -1,8 +1,11 @@
 import { React, useState } from "react";
 
-function Categories({ items }) {
+function Categories({ items, onClickItems }) {
   const [active, setActive] = useState(0);
-  const onClickItem = (index) => setActive(index);
+  const onClickItem = (index) => {
+    setActive(index)
+    onClickItems(index)
+  };
   return (
     <div className="categories">
       <ul>

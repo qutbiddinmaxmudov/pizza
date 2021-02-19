@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-function SortPopup({ items }, ...props) {
+function SortPopup({ items }) {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [sortActive, setSortActive] = useState(0);
   const sortRef = useRef(null);
