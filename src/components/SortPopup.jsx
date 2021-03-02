@@ -49,7 +49,7 @@ const SortPopup = memo(function ({ activeSortType, items, onClickSortType }) {
             {items.map((obj, i) => (
               <li
                 onClick={() => setActive(obj.type)}
-                className={activeSortType === i ? "active" : ""}
+                className={activeSortType === obj.type ? "active" : ""}
                 key={`${obj.type}_${i}`}
               >
                 {obj.name}
@@ -62,7 +62,7 @@ const SortPopup = memo(function ({ activeSortType, items, onClickSortType }) {
   );
 });
 
-SortPopup.PropTypes = {
+SortPopup.propTypes = {
   activeSortType: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.object),
   onClickSortType: PropTypes.func.isRequired

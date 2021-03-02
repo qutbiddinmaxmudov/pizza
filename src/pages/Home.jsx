@@ -29,7 +29,7 @@ const sortItems = [
   },
   {
     name: "алфавиту",
-    type: "alphabet",
+    type: "name",
   },
 ];
 
@@ -40,7 +40,7 @@ function Home() {
   const { category, sortBy } = useSelector((state) => state.filters);
 
   useEffect(() => {
-    dispatch(fetchPizzas());
+    dispatch(fetchPizzas(category, sortBy));
   }, [category, sortBy, dispatch]);
 
   const onSelectCategory = useCallback(

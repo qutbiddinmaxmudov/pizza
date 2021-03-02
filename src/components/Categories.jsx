@@ -25,9 +25,9 @@ const Categories = memo(function ({ active, items, onClickCategory }) {
   );
 });
 
-Categories.PropTypes = {
-  active: PropTypes.number.isRequired,
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+Categories.propTypes = {
+  active: PropTypes.number,
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
   onClickCategory: PropTypes.func,
 };
 
