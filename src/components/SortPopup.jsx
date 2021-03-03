@@ -12,8 +12,9 @@ const SortPopup = memo(function ({ activeSortType, items, onClickSortType }) {
     setVisiblePopup(false);
   };
 
-  const handleOutsideClick = (e) => {
-    if (!e.path.includes(sortRef.current)) setVisiblePopup(false);
+  const handleOutsideClick = (event) => {
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (!path.includes(sortRef.current)) setVisiblePopup(false);
   };
 
   useEffect(() => {
@@ -65,7 +66,7 @@ const SortPopup = memo(function ({ activeSortType, items, onClickSortType }) {
 SortPopup.propTypes = {
   activeSortType: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.object),
-  onClickSortType: PropTypes.func.isRequired
+  onClickSortType: PropTypes.func.isRequired,
 };
 SortPopup.defaultProps = {
   items: [],
