@@ -10,7 +10,12 @@ const cart = (state = initialState, action) => {
       return {
         ...state,
         items: {
-          [action.payload.id]: [...state.items, action.payload],
+          ...state.items,
+          [action.payload.id]: [
+            !state.items[action.payload.id]
+              ? []
+              : [...state.items[action.payload.id], action.payload],
+          ],
         },
       };
     default:

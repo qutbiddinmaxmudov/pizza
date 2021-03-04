@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { fetchPizzas } from "../redux/actions/pizzas";
+import { addPizzaToCart as addPizza } from "../redux/actions/cart";
 import { setCategory, setSortBy } from "../redux/actions/filters";
 import {
   Categories,
@@ -47,11 +48,14 @@ function Home() {
     (index) => dispatch(setCategory(index)),
     [dispatch]
   );
+
+  const onSelectSortType = useCallback((name) => dispatch(setSortBy(name)), [
+    dispatch,
+  ]);
   
-  const onSelectSortType = useCallback(
-    (name) => dispatch(setSortBy(name)),
-    [dispatch]
-  );
+  const addPizzaToCart = (obj)=>{
+    dispatch(addPizza(obj))
+  }
 
   return (
     <div className="container">
@@ -61,12 +65,22 @@ function Home() {
           onClickCategory={onSelectCategory}
           items={categoryNames}
         />
-        <SortPopup onClickSortType={onSelectSortType} activeSortType={sortBy} items={sortItems} />
+        <SortPopup
+          onClickSortType={onSelectSortType}
+          activeSortType={sortBy}
+          items={sortItems}
+        />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
         {isLoaded
-          ? items.map((item) => <PizzaBlock key={item.id} {...item} />)
+          ? items.map((item) => (
+              <PizzaBlock
+                onAddPizza={addPizzaToCart}
+                key={item.id}
+                {...item}
+              />
+            ))
           : Array(8)
               .fill(0)
               .map((_, index) => <PizzaLoadingBlock key={index} />)}
