@@ -11,11 +11,9 @@ const cart = (state = initialState, action) => {
         ...state,
         items: {
           ...state.items,
-          [action.payload.id]: [
-            !state.items[action.payload.id]
-              ? []
-              : [...state.items[action.payload.id], action.payload],
-          ],
+          [action.payload.id]: !state.items[action.payload.id]
+            ? [action.payload]
+            : [...state.items[action.payload.id], action.payload],
         },
       };
     default:
