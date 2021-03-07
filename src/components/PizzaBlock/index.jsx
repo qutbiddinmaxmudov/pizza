@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Button } from "../";
 
-function PizzaBlock({ id, name, imageUrl, price, types, sizes, onAddPizza }) {
+function PizzaBlock({ id, name, imageUrl, price, types, sizes, onAddPizza, count }) {
   const avaibleTypes = ["тонкое", "традиционное"];
   const avaibleSizes = [26, 30, 40];
 
@@ -71,7 +71,7 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onAddPizza }) {
             />
           </svg>
           <span>Добавить</span>
-          <i>2</i>
+          {count && <i>{count}</i>}
         </Button>
       </div>
     </div>
@@ -83,6 +83,7 @@ PizzaBlock.propTypes = {
   imageUrl: PropTypes.string,
   price: PropTypes.number,
   onAddPizza: PropTypes.func,
+  count: PropTypes.number,
 };
 
 PizzaBlock.defaultProps = {

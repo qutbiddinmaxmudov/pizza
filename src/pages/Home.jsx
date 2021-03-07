@@ -37,6 +37,7 @@ const sortItems = [
 function Home() {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.pizzas.items);
+  const cartItems = useSelector((state) => state.cart.items);
   const isLoaded = useSelector((state) => state.pizzas.isLoaded);
   const { category, sortBy } = useSelector((state) => state.filters);
 
@@ -52,10 +53,10 @@ function Home() {
   const onSelectSortType = useCallback((name) => dispatch(setSortBy(name)), [
     dispatch,
   ]);
-  
-  const addPizzaToCart = (obj)=>{
-    dispatch(addPizza(obj))
-  }
+
+  const addPizzaToCart = (obj) => {
+    dispatch(addPizza(obj));
+  };
 
   return (
     <div className="container">
@@ -78,6 +79,7 @@ function Home() {
               <PizzaBlock
                 onAddPizza={addPizzaToCart}
                 key={item.id}
+                count={cartItems[item.id] && cartItems[item.id].length}
                 {...item}
               />
             ))
