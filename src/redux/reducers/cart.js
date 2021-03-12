@@ -10,12 +10,11 @@ const cart = (state = initialState, action) => {
       const currentPizzaItems = !state.items[action.payload.id]
         ? [action.payload]
         : [...state.items[action.payload.id].items, action.payload];
-
       const newItems = {
         ...state.items,
         [action.payload.id]: {
           items: currentPizzaItems,
-          totalPrice: currentPizzaItems[0] * currentPizzaItems.length,
+          totalPrice: currentPizzaItems[0].price * currentPizzaItems.length,
         },
       };
 

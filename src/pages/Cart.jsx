@@ -4,9 +4,11 @@ import { CartItem } from "../components";
 function Cart() {
   const { totalPrice, totalCount, items } = useSelector((state) => state.cart);
 
-  const addedPizzas = Object.values(items).map((item) => (
-    item[0]
-  ));
+  const addedPizzas = Object.values(items).map(item=>({
+    item: item.items[0],
+    totalPrice,
+    count: item.items.length
+  }))
   return (
     <div className="container container--cart">
       <div className="cart">
@@ -85,13 +87,14 @@ function Cart() {
           </div>
         </div>
         <div className="content__items">
+          {console.log(addedPizzas)}
           {addedPizzas.map((obj) => (
             <CartItem
               name={obj.name}
               type={obj.type}
               size={obj.size}
               image={obj.imageUrl}
-              totalCount={obj.totalCount}
+              totalCount={obj.count}
               totalPrice={obj.totalPrice}
             />
           ))}
