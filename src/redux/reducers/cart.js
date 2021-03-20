@@ -24,7 +24,6 @@ const cart = (state = initialState, action) => {
         (acc, cur) => acc + cur.items.length,
         0
       );
-      const allItems = [].concat.apply([], items);
       const totalPrice = getTotalPrice(allItems);
 
       return {
