@@ -1,6 +1,8 @@
 import React from "react";
+import { Button } from ".";
 
-function CartItem({ id, name, type, size, image, totalPrice, totalCount }) {
+function CartItem({ id, name, type, size, image, totalPrice, totalCount, onRemove }) {
+  const handleRemoveClick = ()=> onRemove(id)
   return (
     <div key={id} className="cart__item">
       <div className="cart__item-img">
@@ -55,7 +57,7 @@ function CartItem({ id, name, type, size, image, totalPrice, totalCount }) {
         <b>{totalPrice} ₽</b>
       </div>
       <div className="cart__item-remove">
-        <div className="button button--outline button--circle">
+        <Button onClick={handleRemoveClick} className="button--circle" outline>
           <svg
             width="10"
             height="10"
@@ -72,7 +74,7 @@ function CartItem({ id, name, type, size, image, totalPrice, totalCount }) {
               fill="#EB5A1E"
             />
           </svg>
-        </div>
+        </Button>
       </div>
     </div>
   );

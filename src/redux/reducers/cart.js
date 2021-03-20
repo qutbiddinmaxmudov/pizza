@@ -20,15 +20,17 @@ const cart = (state = initialState, action) => {
         },
       };
 
-      const items = Object.values(newItems).map((obj) => obj.items);
+      const totalCount = Object.keys(newItems).reduce(
+        (acc, cur) => acc + cur.items.length,
+        0
+      );
       const allItems = [].concat.apply([], items);
-
       const totalPrice = getTotalPrice(allItems);
 
       return {
         ...state,
         items: newItems,
-        totalCount: allItems.length,
+        totalCount,
         totalPrice,
       };
     }
@@ -38,14 +40,17 @@ const cart = (state = initialState, action) => {
         totalCount: 0,
         totalPrice: 0,
       };
-    case "REMOVE_CART_ITEM": {
-      const newItems = JSON.parse(JSON.stringify(...state.items));
+    case "REMOVE_CART_ITEM":
+      const newItems = JSON.parse(JSON.stringify(state.items));
+      const currentTotalPrice = newItems[action.payload].totalPrice;
+      const currentTotalCount = newItems[action.payload].items.length;
       delete newItems[action.payload];
       return {
         ...state,
         items: newItems,
+        totalPrice: state.totalPrice - currentTotalPrice,
+        totalCount: state.totalCount - currentTotalCount,
       };
-    }
     default:
       return state;
   }
