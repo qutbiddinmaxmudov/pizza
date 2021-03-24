@@ -3,7 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { CartItem } from "../components";
-import { clearCart, removeCartItem } from "../redux/actions/cart";
+import {
+  clearCart,
+  removeCartItem,
+  plusCartItem,
+  minusCartItem,
+} from "../redux/actions/cart";
 import emptyCartImage from "../static/img/empty-cart.png";
 
 function Cart() {
@@ -14,6 +19,9 @@ function Cart() {
   const onRemoveItem = (id) => {
     if (window.confirm("Хотите удалить пиццу?")) dispatch(removeCartItem(id));
   };
+  const onPlusItem = (id) => dispatch(plusCartItem(id));
+  const onMinusItem = (id) => dispatch(minusCartItem(id));
+
   const { totalPrice, totalCount, items } = useSelector((state) => state.cart);
 
   const addedPizzas = Object.values(items).map((item) => ({
@@ -111,6 +119,8 @@ function Cart() {
                 totalCount={count}
                 totalPrice={totalPrice}
                 onRemove={onRemoveItem}
+                onPlus={onPlusItem}
+                onMinus={onMinusItem}
               />
             ))}
           </div>
