@@ -4,9 +4,9 @@ export const fetchPizzas = (category, sortBy) => (dispatch) => {
   const sort = sortBy === "name" ? "asc" : "desc";
   axios
     .get(
-      `/pizzas?${
+      `https://${process.env.REACT_APP_API_ID}.mockapi.io/memory-game/pizzas?${
         category !== null ? `category=${category}` : ""
-      }&_sort=${sortBy}&_order=${sort}`
+      }&sortBy=${sortBy}&order=${sort}`
     )
     .then(({ data }) => dispatch(setPizzas(data)));
 };
@@ -21,3 +21,5 @@ export const setPizzas = (items) => ({
   payload: items,
   isLoaded: true,
 });
+
+
