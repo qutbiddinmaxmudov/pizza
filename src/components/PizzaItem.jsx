@@ -8,7 +8,6 @@ const types = ['тонкое', 'традиционное']
 const PizzaItem = ({ item, addPizza, cartItems }) => {
   const [selectedSize, setselectedSize] = useState(item.sizes[0])
   const [selectedType, setselectedType] = useState(item.types[0])
-
   const pizzaId = `${item.id}-${selectedSize}-${selectedType}`
   const pizzaCount = cartItems[pizzaId]?.count
 
